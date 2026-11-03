@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="kk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Математика + Информатика: интерактивті ойындар</title>
+<style>
+:root{--bg:#eef3ee;--ink:#1d2b53;--card:#fff;--line:#c9d6cc;--red:#e4572e;--teal:#157f74;--soft:#dcebe3;--ok:#157f74;--bad:#c0392b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#14201d;--ink:#e8f0ea;--card:#1d2e2a;--line:#33504a;--red:#ff8a65;--teal:#4fd1c0;--soft:#27403a;--ok:#4fd1c0;--bad:#ff8a80}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#14201d;--ink:#e8f0ea;--card:#1d2e2a;--line:#33504a;--red:#ff8a65;--teal:#4fd1c0;--soft:#27403a;--ok:#4fd1c0;--bad:#ff8a80}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:28px 28px;background-attachment:fixed}
+main{max-width:640px;margin:0 auto;padding:16px}
+h1{font:800 26px/1.15 Georgia,"Times New Roman",serif;margin:8px 0 4px}
+.sub{margin:0 0 14px;opacity:.8}
+nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+nav button{flex:none;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 12px;font:600 14px inherit;cursor:pointer}
+nav button[aria-selected=true]{background:var(--ink);color:var(--bg)}
+section{display:none;background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:16px;margin-top:10px;box-shadow:5px 5px 0 var(--ink)}
+section.on{display:block}
+h2{font:800 20px/1.2 Georgia,serif;margin:0 0 4px}
+.tag{font-size:13px;opacity:.75;margin:0 0 12px}
+button.b{background:var(--red);color:#fff;border:2px solid var(--ink);border-radius:10px;padding:9px 14px;font:700 15px inherit;cursor:pointer}
+button.g{background:var(--soft);color:var(--ink);border:2px solid var(--ink);border-radius:10px;padding:9px 14px;font:600 15px inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+input{font:inherit;color:var(--ink);background:var(--bg);border:2px solid var(--ink);border-radius:8px;padding:8px;width:90px}
+input.w{width:100%}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0}
+.eq{font:800 32px Georgia,serif;text-align:center;margin:12px 0}
+.lock{display:flex;gap:8px;justify-content:center;margin:8px 0}
+.lock span{width:46px;height:56px;border:2px solid var(--ink);border-radius:8px;display:grid;place-items:center;font:800 28px Georgia,serif;background:var(--soft)}
+.msg{min-height:24px;font-weight:600}.ok{color:var(--ok)}.no{color:var(--bad)}
+pre{background:var(--ink);color:var(--bg);padding:12px;border-radius:10px;overflow-x:auto;font-size:13px;margin:8px 0}
+svg{width:100%;max-width:360px;display:block;margin:0 auto;background:var(--bg);border:2px solid var(--ink);border-radius:10px;touch-action:manipulation}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid var(--line);padding:6px;text-align:left}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:11px;border:2px solid var(--ink);border-radius:10px;background:var(--bg);color:var(--ink);font:600 16px inherit;cursor:pointer}
+.bar{height:14px;border-radius:7px;background:var(--red);transition:width .3s}
+.meter{height:8px;background:var(--soft);border-radius:4px;overflow:hidden}.meter i{display:block;height:100%;background:var(--teal);transition:width 1s linear}
+.scroll{overflow-x:auto}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body><main>
+<h1>Математика мен информатика: ойын орталығы</h1>
+<p class="sub">Бес тапсырма — бес интерактив. Бірін таңда да, ойнап көр.</p>
+<nav role="tablist" id="tabs"></nav>
+
+<section id="t0"><h2>Код ашу</h2><p class="tag">Сызықтық теңдеулер + кодтау, құпия сөз</p>
+<div id="g1"></div></section>
+
+<section id="t1"><h2>Координаталық суретші</h2><p class="tag">Координаталық жазықтық + алгоритм, бағдарлама коды</p>
+<p>Тапсырма: «үйді» салу үшін нүктелерді осы ретпен тор бойынша бас:<br><b id="tg"></b></p>
+<svg id="cv" viewBox="0 0 360 360" role="img" aria-label="Координаталық жазықтық"></svg>
+<div class="row"><button class="g" id="und">Соңғысын өшіру</button><button class="g" id="clr">Тазалау</button><button class="b" id="chk">Тексеру</button></div>
+<p class="msg" id="m2"></p><p class="tag">Сенің сызбаңның бағдарлама коды (Python Turtle):</p><pre id="py2"></pre></section>
+
+<section id="t2"><h2>Теңдеу-бот</h2><p class="tag">ax + b = c алгоритмі + айнымалылар, шарт (if)</p>
+<div class="row"><input id="a" type="number" value="3" aria-label="a"> x + <input id="b" type="number" value="5" aria-label="b"> = <input id="c" type="number" value="20" aria-label="c"></div>
+<button class="b" id="run3">Боттан сұра</button>
+<div id="o3" style="margin-top:10px"></div>
+<p class="tag">Бот осылай жұмыс істейді:</p>
+<pre>a = float(input("a: "))
+b = float(input("b: "))
+c = float(input("c: "))
+if a == 0:
+    print("Теңдеудің шешімі жоқ немесе көп")
+else:
+    x = (c - b) / a
+    print("x =", x)
+    print("Тексеру:", a*x + b == c)</pre></section>
+
+<section id="t3"><h2>Математикалық дуэль</h2><p class="tag">Жылдам есептер + нәтижені кестеде талдау. Қарсыласың — бот.</p>
+<div id="g4"></div></section>
+
+<section id="t4"><h2>Менің бюджетім</h2><p class="tag">Пайыз, пропорция + кесте, формула, диаграмма</p>
+<div id="g5"></div></section>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+const names=["1 · Код ашу","2 · Суретші","3 · Бот","4 · Дуэль","5 · Бюджет"];
+function show(i){names.forEach((_,k)=>{$("#t"+k).classList.toggle("on",k==i);$("#tabs").children[k].setAttribute("aria-selected",k==i)})}
+names.forEach((n,i)=>{const b=document.createElement("button");b.textContent=n;b.setAttribute("role","tab");b.onclick=()=>show(i);$("#tabs").appendChild(b)});
+show(0);
+
+/* 1. Код ашу */
+(function(){
+const R=[{q:"3x + 5 = 20",a:5,h:"3x = 20 − 5 = 15, енді 15-ті 3-ке бөл."},{q:"2x − 7 = 9",a:8,h:"2x = 9 + 7 = 16."},{q:"4x + 1 = 13",a:3,h:"4x = 13 − 1 = 12."}];
+let i=0,d=[],fin=false;
+function draw(){
+const lock=[0,1,2].map(k=>`<span>${d[k]??"?"}</span>`).join("");
+let body;
+if(fin) body=`<p class="msg ok">Сейф ашылды! Сен код бұзушысың.</p><button class="g" id="rs">Қайта ойнау</button>`;
+else if(i<3) body=`<p>Бөлме ${i+1}/3. Түбірді тап — сол құлыптың санын береді.</p><div class="eq">${R[i].q}</div><div class="row"><label>x = <input id="ans" type="number"></label><button class="b" id="go">Тексеру</button><button class="g" id="hint">Кеңес</button></div><p class="msg" id="m1"></p>`;
+else body=`<p>Үш сан да табылды. Енді оларды табу ретімен жазып, сейфті аш.</p><div class="row"><input id="code" inputmode="numeric" maxlength="3" placeholder="___"><button class="b" id="go">Ашу</button></div><p class="msg" id="m1"></p>`;
+$("#g1").innerHTML=`<div class="lock" aria-label="Құлып">${lock}</div>`+body;
+const m=$("#m1"),go=$("#go");
+if(go)go.onclick=()=>{
+ if(i<3){const v=+$("#ans").value;if($("#ans").value!==""&&v===R[i].a){d.push(v);i++;draw()}else{m.className="msg no";m.textContent="Қате. Қайта есепте: екі жағына бірдей амал қолдан."}}
+ else{if($("#code").value===d.join("")){fin=true;draw()}else{m.className="msg no";m.textContent="Код қате. Сандардың ретін тексер."}}};
+const h=$("#hint");if(h)h.onclick=()=>{m.className="msg";m.textContent=R[i].h};
+const rs=$("#rs");if(rs)rs.onclick=()=>{i=0;d=[];fin=false;draw()};
+}
+draw();})();
+
+/* 2. Координаталық суретші */
+(function(){
+const T=[[-3,-2],[3,-2],[3,2],[0,5],[-3,2],[-3,-2]];let P=[];
+$("#tg").textContent=T.map(p=>`(${p[0]}; ${p[1]})`).join(" → ");
+const X=x=>180+x*30,Y=y=>180-y*30,cv=$("#cv");
+function draw(){
+let s="";for(let k=-6;k<=6;k++){s+=`<line x1="${X(k)}" y1="0" x2="${X(k)}" y2="360" stroke="currentColor" opacity="${k?.12:.7}"/><line x1="0" y1="${Y(k)}" x2="360" y2="${Y(k)}" stroke="currentColor" opacity="${k?.12:.7}"/>`;
+if(k&&k%2==0)s+=`<text x="${X(k)+2}" y="${Y(0)+12}" font-size="10" fill="currentColor">${k}</text><text x="${X(0)+3}" y="${Y(k)-2}" font-size="10" fill="currentColor">${k}</text>`}
+if(P.length>1)s+=`<polyline fill="none" stroke="#e4572e" stroke-width="3" points="${P.map(p=>X(p[0])+","+Y(p[1])).join(" ")}"/>`;
+P.forEach((p,k)=>s+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="5" fill="#157f74"/><text x="${X(p[0])+7}" y="${Y(p[1])-7}" font-size="11" fill="currentColor">${k+1}</text>`);
+cv.innerHTML=s;cv.style.color="var(--ink)";
+$("#py2").textContent=P.length?"import turtle as t\nt.penup()\n"+P.map((p,k)=>`t.goto(${p[0]*30}, ${p[1]*30})`+(k==0?"\nt.pendown()":"")).join("\n")+"\nt.done()":"# Нүкте қойсаң, код осында шығады";}
+cv.onclick=e=>{const r=cv.getBoundingClientRect(),k=360/r.width;
+ const x=Math.round(((e.clientX-r.left)*k-180)/30),y=Math.round((180-(e.clientY-r.top)*k)/30);
+ if(Math.abs(x)<=6&&Math.abs(y)<=6){P.push([x,y]);$("#m2").textContent="";draw()}};
+$("#und").onclick=()=>{P.pop();draw()};$("#clr").onclick=()=>{P=[];$("#m2").textContent="";draw()};
+$("#chk").onclick=()=>{const m=$("#m2");
+ const bad=T.findIndex((t,k)=>!P[k]||P[k][0]!==t[0]||P[k][1]!==t[1]);
+ if(bad<0&&P.length==T.length){m.className="msg ok";m.textContent="Дұрыс! Үй дайын. Төмендегі кодты Python-да іске қос."}
+ else if(bad>=0&&P[bad]){m.className="msg no";m.textContent=`${bad+1}-нүкте қате: керегі (${T[bad][0]}; ${T[bad][1]}).`}
+ else{m.className="msg no";m.textContent="Нүктелер жетпейді. Тізімді тағы қара."}};
+draw();})();
+
+/* 3. Теңдеу-бот */
+$("#run3").onclick=()=>{
+const a=+$("#a").value,b=+$("#b").value,c=+$("#c").value,o=$("#o3"),f=n=>Math.round(n*1000)/1000;
+if(a===0){o.innerHTML=`<p class="msg no">a = 0 болса, теңдеу ${b===c?"шексіз көп шешімге ие (0 = 0)":"шешімсіз"}.</p>`;return}
+const r=c-b,x=r/a,chk=a*x+b;
+o.innerHTML=`<p>1) Бос санды оңға шығарамыз: ${a}x = ${c} − (${b}) = <b>${f(r)}</b></p><p>2) Екі жағын ${a}-ға бөлеміз: x = ${f(r)} / ${a} = <b>${f(x)}</b></p><p class="msg ok">Тексеру: ${a} · ${f(x)} + ${b} = ${f(chk)} ✓</p>`};
+
+/* 4. Дуэль */
+(function(){
+const Q=[["2x + 3x = ?",["5x","6x","5x²","x"],0],["x + 7 = 12, x = ?",["4","5","6","19"],1],["(3; −2) нүктесі қай ширекте?",["I","II","III","IV"],3],["3(x + 2) = ?",["3x + 2","x + 6","3x + 6","3x + 5"],2],["5x = 35, x = ?",["6","7","8","30"],1],["150-дің 20%-ы?",["20","25","30","15"],2],["A(0; 4) нүктесі қай осьте жатыр?",["Ox","Oy","екеуінде","ешқайсысында"],1],["2x − 4 = 2, x = ?",["1","2","3","4"],2]];
+let q,me,bot,log,t0,tm,T=15;
+function start(){q=0;me=0;bot=0;log=[];next()}
+function next(){
+ if(q>=Q.length){end();return}
+ t0=Date.now();let left=T;
+ $("#g4").innerHTML=`<p>Сұрақ ${q+1}/${Q.length} · Сен: <b>${me}</b> · Бот: <b>${bot}</b></p><div class="meter"><i id="mt" style="width:100%"></i></div><div class="eq" style="font-size:24px">${Q[q][0]}</div>`+Q[q][1].map((o,k)=>`<button class="opt" data-k="${k}">${o}</button>`).join("");
+ requestAnimationFrame(()=>{const m=$("#mt");if(m){m.style.transitionDuration=T+"s";m.style.width="0%"}});
+ document.querySelectorAll("#g4 .opt").forEach(b=>b.onclick=()=>pick(+b.dataset.k));
+ clearTimeout(tm);tm=setTimeout(()=>pick(-1),T*1000)}
+function pick(k){clearTimeout(tm);const s=(Date.now()-t0)/1000,ok=k===Q[q][2];
+ if(ok)me+=100+Math.max(0,Math.round((T-s)*5));
+ if(Math.random()<.65)bot+=100+Math.round(Math.random()*40);
+ log.push({q:Q[q][0],ok,s:Math.min(s,T)});q++;
+ document.querySelectorAll("#g4 .opt").forEach((b,i)=>{b.disabled=true;if(i===Q[q-1][2])b.style.borderColor="var(--ok)";else if(i===k)b.style.borderColor="var(--bad)"});
+ setTimeout(next,700)}
+function end(){
+ const avg=log.reduce((a,l)=>a+l.s,0)/log.length,right=log.filter(l=>l.ok).length;
+ const hard=[...log].sort((x,y)=>(x.ok-y.ok)||(y.s-x.s))[0];
+ $("#g4").innerHTML=`<p class="msg ${me>=bot?"ok":"no"}">${me>bot?"Жеңдің!":me==bot?"Тең ойын.":"Бот жеңді. Реванш аласың ба?"} Сен ${me} — Бот ${bot}</p>
+ <div class="scroll"><table><tr><th>Сұрақ</th><th>Нәтиже</th><th>Уақыт</th></tr>${log.map(l=>`<tr><td>${l.q}</td><td>${l.ok?"✓":"✗"}</td><td>${l.s.toFixed(1)} с</td></tr>`).join("")}</table></div>
+ <p>Дұрыс жауап: <b>${right}/${log.length}</b> (${Math.round(right/log.length*100)}%). Орташа уақыт: <b>${avg.toFixed(1)} с</b>.<br>Ең қиын сұрақ: <b>${hard.q}</b></p><button class="b" id="again">Қайта ойнау</button>`;
+ $("#again").onclick=start}
+$("#g4").innerHTML=`<p>8 сұрақ, әрқайсысына ${T} секунд. Тез жауап берсең, ұпай көп.</p><button class="b" id="st">Дуэльді бастау</button>`;
+$("#st").onclick=start;})();
+
+/* 5. Бюджет */
+(function(){
+let R=[{n:"Қалта ақша",v:8000,t:"i"},{n:"Сыйлық",v:2000,t:"i"},{n:"Тамақ",v:3500,t:"e"},{n:"Ойын / қызмет",v:2000,t:"e"},{n:"Көлік",v:1500,t:"e"}];
+const f=n=>Math.round(n).toLocaleString("ru-RU");
+function draw(){
+ const inc=R.filter(r=>r.t=="i").reduce((a,r)=>a+r.v,0),ex=R.filter(r=>r.t=="e").reduce((a,r)=>a+r.v,0),sv=inc-ex,mx=Math.max(1,...R.filter(r=>r.t=="e").map(r=>r.v));
+ $("#g5").innerHTML=`<div class="scroll"><table>${R.map((r,k)=>`<tr><td><input class="w" data-k="${k}" data-f="n" value="${r.n}" aria-label="Атауы"></td><td><input data-k="${k}" data-f="v" type="number" value="${r.v}" aria-label="Сома"></td><td><select data-k="${k}" data-f="t" style="font:inherit;background:var(--bg);color:var(--ink);border:2px solid var(--ink);border-radius:8px;padding:8px"><option value="i" ${r.t=="i"?"selected":""}>Кіріс</option><option value="e" ${r.t=="e"?"selected":""}>Шығыс</option></select></td></tr>`).join("")}</table></div>
+ <div class="row"><button class="g" id="add">+ Жол қосу</button></div>
+ <p>Кіріс: <b>${f(inc)} ₸</b> · Шығыс: <b>${f(ex)} ₸</b> · Қалды: <b class="${sv>=0?"ok":"no"}">${f(sv)} ₸</b></p>
+ <p>Жинақ үлесі: <b>${inc?Math.round(sv/inc*100):0}%</b> (мақсат: кемінде 20%) ${inc&&sv/inc>=.2?"✓ мақсатқа жеттің":"— шығынды қысқарту керек"}</p>
+ <p class="tag">Шығыс диаграммасы (кіріске пайызымен):</p>
+ ${R.filter(r=>r.t=="e").map(r=>`<div style="margin:6px 0"><div>${r.n}: ${inc?Math.round(r.v/inc*100):0}%</div><div class="bar" style="width:${r.v/mx*100}%"></div></div>`).join("")}
+ <p class="tag">Формула кестеде: =SUM(B1:B2) − SUM(B3:B5)</p>`;
+ document.querySelectorAll("#g5 [data-k]").forEach(e=>e.onchange=()=>{const r=R[+e.dataset.k],fl=e.dataset.f;r[fl]=fl=="v"?Math.max(0,+e.value||0):e.value;draw()});
+ $("#add").onclick=()=>{R.push({n:"Жаңа",v:0,t:"e"});draw()}}
+draw();})();
+</script></body></html>
